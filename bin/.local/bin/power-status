@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# lê estado atual
+state=$(cat /sys/firmware/acpi/platform_profile)
+
+# mapeia para nomes/estados Waybar
+case "$state" in
+    low-power) text="SILENT"; class="low-power" ;;
+    quiet) text="CHILL"; class="quiet" ;;
+    balanced) text="BALANCE"; class="balanced" ;;
+    performance) text="FURY"; class="performance" ;;
+    *) text="UNKNOWN"; class="unknown" ;;
+esac
+
+# imprime JSON
+echo "{\"text\":\"●\",\"tooltip\":\"$text\",\"class\":\"$class\"}"

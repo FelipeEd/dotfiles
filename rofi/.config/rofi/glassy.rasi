@@ -1,0 +1,149 @@
+/* ============================================
+   ROFI - Tema Glassy (combinando com Waybar)
+   ============================================ */
+
+* {
+    accent:             #20d0fc;
+    text-main:          #dcdcdc;
+    text-dim:           #888888;
+    bg-dark:            rgba(22, 22, 22, 0.83);
+    bg-glassy:          rgba(255, 255, 255, 0.12);
+    bg-selected:        rgba(32, 208, 252, 0.25);
+    bg-active:          rgba(0, 255, 255, 0.35);
+    border-light:       rgba(255, 255, 255, 0.45);
+    border-medium:      rgba(255, 255, 255, 0.3);
+    border-subtle:      rgba(255, 255, 255, 0.15);
+    
+    background-color:   transparent;
+    text-color:         @text-main;
+    font:               "Noto Sans Bold 12";
+}
+
+window {
+    background-color:   @bg-dark;
+    border:             2px;
+    border-color:       @border-medium;
+    border-radius:      12px;
+    padding:            12px;
+    width:              600px;
+}
+
+mainbox {
+    background-color:   transparent;
+    spacing:            12px;
+    padding:            0px;
+}
+
+inputbar {
+    background-color:   @bg-glassy;
+    border:             1px solid;
+    border-color:       @border-medium;
+    border-radius:      8px;
+    padding:            10px 14px;
+    spacing:            8px;
+    children:           [ prompt, entry ];
+}
+
+prompt {
+    text-color:         @accent;
+    font:               "Noto Sans Bold 13";
+}
+
+entry {
+    placeholder:        "Pesquisar...";
+    placeholder-color:  @text-dim;
+    text-color:         @text-color;
+}
+
+message {
+    background-color:   transparent;
+    border:             1px solid;
+    border-color:       @border-subtle;
+    border-radius:      8px;
+    padding:            8px;
+}
+
+textbox {
+    text-color:         @text-color;
+}
+
+listview {
+    background-color:   transparent;
+    spacing:            4px;
+    lines:              8;
+    padding:            4px 0px;
+}
+
+element {
+    background-color:   transparent;
+    border:             0px;
+    border-radius:      8px;
+    padding:            8px 12px;
+    spacing:            8px;
+}
+
+element normal.normal {
+    background-color:   transparent;
+    text-color:         @text-color;
+}
+
+element normal.active {
+    background-color:   @bg-active;
+    text-color:         @accent;
+}
+
+element selected.normal {
+    background-color:   @bg-selected;
+    border:             1px solid;
+    border-color:       @border-light;
+    text-color:         @accent;
+    font:               "Noto Sans Bold 12";
+}
+
+element selected.active {
+    background-color:   @bg-active;
+    border:             1px solid;
+    border-color:       @accent;
+    text-color:         @accent;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    vertical-align:     0.5;
+}
+
+element-icon {
+    background-color:   transparent;
+    size:               24px;
+}
+
+mode-switcher {
+    background-color:   transparent;
+    spacing:            8px;
+    padding:            4px 0px;
+}
+
+button {
+    background-color:   @bg-glassy;
+    border:             1px solid;
+    border-color:       @border-subtle;
+    border-radius:      8px;
+    padding:            8px 16px;
+    text-color:         @text-main;
+}
+
+button selected {
+    background-color:   @bg-active;
+    border-color:       @accent;
+    text-color:         @accent;
+    font:               "Noto Sans Bold 12";
+}
+
+error-message {
+    background-color:   @bg-dark;
+    border:             2px solid;
+    border-color:       #ff5555;
+    border-radius:      12px;
+    padding:            12px;
+}

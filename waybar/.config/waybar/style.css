@@ -1,0 +1,289 @@
+/* ============================================
+   VARIÁVEIS DE CORES
+   ============================================ */
+@define-color accent_color #20d0fc;
+@define-color text_color rgb(220, 220, 220);
+@define-color border_light rgba(255, 255, 255, 0.45);
+@define-color border_medium rgba(255, 255, 255, 0.3);
+@define-color border_subtle rgba(255, 255, 255, 0.15);
+
+/* ============================================
+   CLASSES DE GRADIENTES REUTILIZÁVEIS
+   ============================================ */
+.glassy-bg {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.25),
+            rgba(0, 0, 0, 0.025));
+}
+
+.hover-bg {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.05),
+            rgba(0, 0, 0, 0.4));
+}
+
+.active-bg {
+    background-image: linear-gradient(to bottom,
+            rgba(0, 255, 255, 0.6),
+            rgba(0, 100, 100, 0.1));
+}
+
+.menu-bg {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.15),
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.4));
+}
+
+.menu-hover-bg {
+    background-image: linear-gradient(to bottom,
+            rgba(0, 255, 255, 0.15),
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 255, 255, 0.15));
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+* {
+    border: none;
+    border-radius: 8;
+    min-height: 0;
+    font-family:
+        Noto Sans,
+        JetBrainsMono Nerd Font;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0;
+    background: transparent;
+}
+
+/* ============================================
+   WINDOW & TOOLTIP
+   ============================================ */
+window#waybar {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(0, 0, 0, 0.5) 50%,
+            rgba(0, 0, 0, 0.6) 50%);
+    border-radius: 12px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+tooltip {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(0, 0, 0, 0.2) 50%,
+            rgba(0, 0, 0, 0.3) 50%);
+    color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+tooltip label {
+    color: white;
+}
+
+/* ============================================
+   COMPONENTES CUSTOMIZADOS
+   ============================================ */
+#custom-os_btn {
+    margin: 0 0.5cm;
+    color: white;
+    font-size: 24px;
+    font-family:
+        "Symbols Nerd Font", "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+}
+
+/* ============================================
+   TASKBAR
+   ============================================ */
+#taskbar {
+    margin: 4px 8px 4px 0.25cm;
+    color: white;
+}
+
+#taskbar button {
+    margin: 0 0.2cm;
+    padding: 1px;
+    border-radius: 4px;
+    border-top: 1px solid @border_medium;
+    border-bottom: 1px solid @border_subtle;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+#taskbar button:hover {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.05),
+            rgba(0, 0, 0, 0.4));
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid @border_medium;
+    border-bottom: 1px solid @border_subtle;
+}
+
+#taskbar button.active {
+    background-image: linear-gradient(to bottom,
+            rgba(0, 255, 255, 0.6),
+            rgba(0, 100, 100, 0.1));
+}
+
+/* ============================================
+   MÓDULOS PRINCIPAIS (estilo glassy reutilizável)
+   ============================================ */
+#memory,
+#battery,
+#network,
+#clock,
+#tray,
+#workspaces,
+#pulseaudio,
+#temperature {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.25),
+            rgba(0, 0, 0, 0.025));
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.34);
+    margin: 4px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    color: @text_color;
+    border-top: 1px solid @border_light;
+    border-bottom: 1px solid @border_subtle;
+}
+
+/* ============================================
+   TRAY MENU
+   ============================================ */
+#tray menu {
+    background-color: rgba(255, 255, 255, 0.025);
+    color: @text_color;
+    padding: 4px;
+}
+
+#tray menu menuitem {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.15),
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.4));
+    margin: 3px;
+    color: @text_color;
+    border-radius: 4px;
+    border-top: 1px solid @border_medium;
+    border-bottom: 1px solid @border_subtle;
+}
+
+#tray menu menuitem:hover {
+    background-image: linear-gradient(to bottom,
+            rgba(0, 255, 255, 0.15),
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 255, 255, 0.15));
+    color: @accent_color;
+    text-shadow: 0px 0px 6px @accent_color;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   WORKSPACES
+   ============================================ */
+#workspaces button {
+    transition: all 100ms;
+    all: initial;
+    min-width: 0;
+    color: @text_color;
+    margin: 0 0.2cm;
+    text-shadow: 0px 0px 4px rgb(135, 135, 135);
+}
+
+#workspaces button.active,
+#workspaces button.current_output {
+    color: @accent_color;
+    text-shadow: 0px 0px 6px @accent_color;
+}
+
+#workspaces button:hover {
+    transition: all 120ms;
+    color: @accent_color;
+    text-shadow: 0px 0px 8px @accent_color;
+}
+
+#workspaces button.urgent {
+    color: #e78a4e;
+    text-shadow: 0px 0px 6px #e78a4e;
+}
+
+/* ============================================
+   ESTADOS ESPECÍFICOS
+   ============================================ */
+/* Temperatura */
+#temperature {
+    color: #aaffaa;
+    padding: 0 8px;
+}
+
+#temperature.warning {
+    color: #ffae00;
+}
+
+#temperature.critical {
+    color: #ff3300;
+    font-weight: bolder;
+}
+
+/* Bateria */
+#battery {
+    padding: 0 8px;
+}
+
+#battery.charging {
+    color: #00ffcc;
+    animation: blink 1s infinite;
+}
+
+#battery.full {
+    color: #00ff00;
+}
+
+#battery.warning {
+    color: #fcf520;
+}
+
+#battery.critical {
+    color: #ff5555;
+    font-weight: bold;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0.5;
+    }
+}
+
+#custom-power {
+    font-size: 13px;
+    padding: 0 5px;
+    margin: 4px 2px;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+/* cores por estado */
+#custom-power.low-power {
+    color: #888888;
+    text-shadow: 0 0 5px #888888;
+}
+
+#custom-power.quiet {
+    color: #4fc3ff;
+    text-shadow: 0 0 6px #4fc3ff;
+}
+
+#custom-power.balanced {
+    color: #00ff99;
+    text-shadow: 0 0 6px #00ff99;
+}
+
+#custom-power.performance {
+    color: #ff4444;
+    text-shadow: 0 0 8px #ff4444;
+}

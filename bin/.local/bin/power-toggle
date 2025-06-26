@@ -1,0 +1,13 @@
+#!/bin/bash
+profiles=(low-power quiet balanced performance)
+current=$(cat /sys/firmware/acpi/platform_profile)
+next_index=0
+for i in "${!profiles[@]}"; do
+    if [[ "${profiles[i]}" == "$current" ]]; then
+        next_index=$(( (i + 1) % ${#profiles[@]} ))
+        break
+    fi
+done
+next=${profiles[$next_index]}
+echo "$next" | sudo tee /sys/firmware/acpi/platform_profile
+echo "$next"

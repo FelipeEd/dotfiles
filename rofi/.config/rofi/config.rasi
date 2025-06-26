@@ -1,0 +1,6 @@
+// Tema glassy customizado (combinando com Waybar/Wlogout)
+@theme "~/.config/rofi/glassy.rasi"
+
+// Temas anteriores:
+//@theme "/usr/share/rofi/themes/Indego.rasi"
+//@theme "/usr/share/rofi/themes/purple.rasi"

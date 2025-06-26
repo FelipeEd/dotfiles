@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# limites desejados quando "ligado"
+LIMIT_FREQ="1.3GHz"   # ajuste se quiser
+MAX_FREQ="3.40GHz"     # máximo real do seu CPU
+
+NO_TURBO_PATH="/sys/devices/system/cpu/intel_pstate/no_turbo"
+
+state=$(cat "$NO_TURBO_PATH")
+
+if [ "$state" = "0" ]; then
+    # ===== ATIVA LIMITE =====
+    echo 1 | sudo tee "$NO_TURBO_PATH" >/dev/null
+    sudo cpupower frequency-set -u "$LIMIT_FREQ" >/dev/null
+    echo "CPU_LIMIT_ON"
+else
+    # ===== DESATIVA LIMITE =====
+    echo 0 | sudo tee "$NO_TURBO_PATH" >/dev/null
+    sudo cpupower frequency-set -u "$MAX_FREQ" >/dev/null
+    echo "CPU_LIMIT_OFF"
+fi
