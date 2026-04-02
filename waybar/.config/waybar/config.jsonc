@@ -3,26 +3,26 @@
   "spacing": 0,
   "height": 0,
   "margin-top": 0,
-  "position": "top",
+  "position": "bottom",
   "margin-right": 4,
   "margin-bottom": 0,
   "margin-left": 4,
   "modules-left": [
     "custom/os_btn",
-    "temperature",
-    "custom/power",
     "hyprland/workspaces",
-    "wlr/taskbar",
   ],
   "modules-center": [
-    "clock"
+    "wlr/taskbar",
   ],
   "modules-right": [
     "tray",
-    "network",
-    "battery",
-    "pulseaudio",
-    "memory"
+    "custom/network",
+    "custom/volume",
+    "custom/temperature",
+    "custom/cpu-freeze",
+    "custom/power",
+    "custom/battery",
+    "clock",
   ],
   "sway/workspaces": {
     "disable-scroll": true,
@@ -41,53 +41,38 @@
     "tooltip": false,
   },
   "clock": {
-    "format": "{:%H:%M - %a | %d %b %Y}",
-    "tooltip": false,
+    "format": "{:%H:%M}",
+    "tooltip": true,
+    "tooltip-format": "{:%A, %d de %B de %Y}",
   },
-  "network": {
-    "format-wifi": "󰤢  {bandwidthDownBits}",
-    "format-ethernet": "󰤢  {bandwidthDownBits}",
-    "format-disconnected": "󰤠  No Network",
+  "custom/network": {
+    "exec": "$HOME/.local/bin/network-status",
     "interval": 5,
-    "tooltip": false,
+    "return-type": "json",
+    "format": "{}  ",
+    "tooltip": true,
     "on-click": "kitty --app-id nmtui -e nmtui",
   },
-  "pulseaudio": {
-    "scroll-step": 5,
-    "max-volume": 150,
-    "format": "{icon}  {volume}%",
-    "format-bluetooth": "{icon} {volume}%",
-    "format-icons": [
-      "",
-      "",
-      " "
-    ],
-    "nospacing": 1,
-    "format-muted": " ",
+  "custom/volume": {
+    "exec": "$HOME/.local/bin/volume-status",
+    "interval": 2,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
     "on-click": "pavucontrol",
-    "tooltip": false,
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
   },
-  "battery": {
-    "format": "{icon}   {capacity}%",
-    "format-charging": "⚡ {capacity}%", // quando está carregando
-    "format-full": " {capacity}%", // quando está 100%
+  "custom/battery": {
+    "exec": "$HOME/.local/bin/battery-bar",
     "interval": 5,
-    "states": {
-      "warning": 20,
-      "critical": 10,
-    },
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "return-type": "json",
+    "format": "{}",
     "tooltip": true,
   },
   "memory": {
     "interval": 5,
-    "format": "   {used}G",
+    "format": "   {used}",
     "tooltip": false,
   },
   "custom/os_btn": {
@@ -95,21 +80,27 @@
     "tooltip": false,
     "on-click": "wlogout", // ou o comando que quiser
   },
-  "temperature": {
-    "format": "🌡️ {temperatureC}°C",
-    "tooltip": false,
-    "interval": 10,
-    "max-temp": 80,
-    "critical-temp": 90,
-    "min-temp": 20,
+  "custom/temperature": {
+    "exec": "$HOME/.local/bin/temp-status",
+    "interval": 5,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+  },
+  "custom/cpu-freeze": {
+    "exec": "$HOME/.local/bin/cpu-freeze-status",
+    "interval": 2,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "$HOME/.local/bin/cpu-limit-toggle",
   },
   "custom/power": {
-    "exec": "~/.local/bin/power-status",
+    "exec": "$HOME/.local/bin/power-status",
     "interval": 2,
     "tooltip": true,
-    "tooltip-format": "{tooltip}",
-    "format": "{text}",
+    "format": "{}",
     "return-type": "json",
-    "on-click": "~/.local/bin/power-toggle",
+    "on-click": "$HOME/.local/bin/power-toggle",
   },
 }

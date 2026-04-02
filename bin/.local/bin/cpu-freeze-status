@@ -1,0 +1,11 @@
+#!/bin/bash
+
+NO_TURBO_PATH="/sys/devices/system/cpu/intel_pstate/no_turbo"
+
+state=$(cat "$NO_TURBO_PATH" 2>/dev/null)
+
+if [ "$state" = "1" ]; then
+    echo '{"text": "", "class": "frozen", "tooltip": "CPU limitada (turbo off)"}'
+else
+    echo '{"text": "", "class": "fast", "tooltip": "CPU normal (turbo on)"}'
+fi

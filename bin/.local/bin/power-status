@@ -13,4 +13,4 @@ case "$state" in
 esac
 
 # imprime JSON
-echo "{\"text\":\"●\",\"tooltip\":\"$text\",\"class\":\"$class\"}"
+echo "{\"text\":\"󱐋\",\"tooltip\":\"$text\",\"class\":\"$class\"}"
